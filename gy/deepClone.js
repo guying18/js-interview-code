@@ -47,3 +47,22 @@ function deepClone (obj = {}) {
   // 返回结果
   return result
 }
+
+// 深拷贝复习
+function deepClone1 (obj) {
+  if (typeof obj !== Object || obj == null) {
+    return obj;
+  }
+  let result;
+  if (obj instanceof Array) {
+    result = [];
+  } else {
+    result = {};
+  }
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      result[key] = deepClone1(obj[key]);
+    }
+  }
+  return result;
+}
